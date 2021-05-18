@@ -11,17 +11,15 @@ import static com.codeborne.selenide.Selenide.open;
 
 @Log4j2
 public class LoginPage extends BasePage {
-    public static final String EMAIL = "inputEmail";
-    public static final String PASSWORD = "inputPassword";
+    public static final String EMAIL = "input#inputEmail";
+    public static final String PASSWORD = "input#inputPassword";
     public static final String LOGIN_BUTTON = "btnLogin";
-    public static final String ERROR_MESSAGE = "form-control-feedback";
-    public static final String URL = "https://app.qase.io/login";
-
+    public static final String ERROR_MESSAGE = ".form-control-feedback";
 
     @Step("Open Login page")
     public LoginPage openLoginPage() {
-        log.info("Open 'Login page' by link: " + URL);
-        open(URL);
+        log.info("Open 'Login page' by link: " + URL + "/login");
+        open(URL + "/login");
         return this;
     }
 

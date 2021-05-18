@@ -24,7 +24,7 @@ public class LoginSteps {
         return this;
     }
 
-    @Step("Invalid data")
+    @Step("Log in with invalid data")
     public LoginSteps invalidLogin(String username, String password) {
         log.info("Edit Email: " + username + ", and Password: " + password);
         loginPage

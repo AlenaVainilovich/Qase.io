@@ -13,7 +13,6 @@ public class TestCase {
     String severity;
     String priority;
     String type;
-    String milestone;
     String behavior;
     String automationStatus;
     String preConditions;
