@@ -1,11 +1,13 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import lombok.extern.log4j.Log4j2;
+import models.TestCase;
+import org.testng.Assert;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 @Log4j2
 public class TestRepositoryPage extends BasePage {
@@ -16,11 +18,16 @@ public class TestRepositoryPage extends BasePage {
     public static final String EDIT_SUITE = "//a[text()='%s']/parent::span//i[contains(@class,'fa-pencil-alt')]";
     public static final String DELETE_SUITE = "//a[text()='%s']/parent::span//i[contains(@class,'fa-trash')]";
     public static final String CREATE_NEW_CASE = "#create-case-button";
-    public static final String CASE_NAME = "//*[contains(@class,'case-row-title') and text()='%s']";
+    public static final String CREATE_NEW_CASE_VAR2 = "//*[contains(text(), 'Create new case')]";
+    public static final String CASE_NAME = "//*[contains(@class,'case-row-title')]";
     public static final String DELETE_CASE_BUTTON = "//button[contains(text(),'Delete')]";
-    public static final String CREATE_NEW_CASE_WITHOUT_TEST_SUITE = "//*[contains(text(), 'Create new case')]";
+    public static final String EDIT_CASE_BUTTON = "//*[contains(@class,'far fa-pen')]";
+    public static final String CREATE_NEW_CASE_WITHOUT_TEST_SUITE = "//a[contains(@class,'mr-2 btn-primary')]/child::i";
     public static final String SUITE_NAME = "suite-header";
     public static final String DESCRIPTION_NAME = "suite-description";
+    public static final String TEST_PLAN = "//span[text()='Test Plans']";
+    public static final String NUMBER_OF_CASES = "//*[contains(@class,'case-row-title')]";
+
 
 
     public TestRepositoryPage openTestRepositoryPage() {
@@ -60,7 +67,13 @@ public class TestRepositoryPage extends BasePage {
     }
 
     public TestCasePage openTestCasePage() {
+        //int amount = Selenide.$$x(CREATE_NEW_CASE).size();
         $(CREATE_NEW_CASE).click();
+        /*if (amount != 0) {
+            $x(CREATE_NEW_CASE).shouldBe(Condition.appear).click();
+        } else {
+            $x(CREATE_NEW_CASE_VAR2).shouldBe(Condition.appear).click();
+        }*/
         return new TestCasePage();
     }
 
@@ -76,7 +89,33 @@ public class TestRepositoryPage extends BasePage {
         return this;
     }
 
+    public TestRepositoryPage editCase(String caseName) {
+        log.info(String.format("Choose Case by name: %s", caseName));
+        $x(String.format(EDIT_CASE_BUTTON, caseName)).shouldBe(Condition.appear).click();
+        return this;
+    }
 
+
+    public TestPlanPage openTestPlanPage() {
+        log.info(String.format("Open 'Test Plan page' by locator: %s", TEST_PLAN));
+        $x(SETTINGS).shouldBe(Condition.appear).click();
+        return new TestPlanPage();
+    }
+
+    public boolean verifyCreatedTestCase(String testCaseName) {
+        boolean isTestCaseWasCreated = false;
+        ElementsCollection cases = $$x(NUMBER_OF_CASES);
+        try {
+            for (int i = 0; i < cases.size(); i++) {
+                if (testCaseName.equals(cases.get(i).getText())) {
+                    isTestCaseWasCreated = true;
+                }
+            }
+        } catch (NullPointerException ex) {
+            Assert.fail("Test Case not found");
+        }
+        return isTestCaseWasCreated;
+    }
 }
 
 

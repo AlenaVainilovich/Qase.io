@@ -10,14 +10,10 @@ public class SuiteTest extends BaseTest {
     public String suiteName = faker.harryPotter().character();
     public String description = faker.hitchhikersGuideToTheGalaxy().planet();
     public String preCondition = faker.gameOfThrones().character();
-    public String editSuiteName = faker.harryPotter().character();
-    //public String editDescription = faker.hitchhikersGuideToTheGalaxy().planet();
-    //public String editPreCondition = faker.backToTheFuture().character();
 
     TestSuite testSuite = new TestSuite(suiteName, description, preCondition);
-    //TestSuite editTestSuite = new TestSuite(editSuiteName, editDescription, editPreCondition);
 
-    @Test(description = "Create new suite, verify that suite was created. Edit existing suite, and verify that suite was edited. Delete suite and verify that suite was deleted")
+    @Test(description = "Create new suite in new project, than delete the suite")
     public void createAndDeleteSuite() {
         loginSteps
                 .login(EMAIL, PASSWORD);

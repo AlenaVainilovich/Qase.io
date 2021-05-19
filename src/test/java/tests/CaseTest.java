@@ -49,7 +49,8 @@ public class CaseTest extends BaseTest {
             .postConditions(editPostCondition)
             .build();
 
-    @Test(description = "Create new 'Case' and validate that case was created, edit existing 'Case',validate that case was edited, and delete 'Case'")
+    @Test(description = "Create new Test Case in a Test Suite. Verify that Test Case was created. Edit Test Case. " +
+            "Delete edited Test Case")
     public void createEditAndDeleteCase() {
         loginSteps
                 .login(EMAIL, PASSWORD);
@@ -59,8 +60,8 @@ public class CaseTest extends BaseTest {
                 .createSuite(testSuite);
         caseSteps
                 .createNewCase(newCase, testSuite)
-                .deleteCase(title);
-
-
+                .verifyThatTestCaseWasCreated(title)
+                .editTestCase(editCase, testSuite, editTitle)
+                .deleteCase(editTitle);
     }
 }

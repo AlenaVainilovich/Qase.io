@@ -6,6 +6,7 @@ import elements.ProseMirror;
 import models.TestSuite;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class SuitePage extends BasePage {
     public static final String SUITE_NAME_LABEL = "label[for='name']";
@@ -27,6 +28,7 @@ public class SuitePage extends BasePage {
 
     public TestRepositoryPage clickOnCreateButton() {
         $(BUTTON_CREATE_SUITE).click();
+        sleep(2000);
         return new TestRepositoryPage();
     }
 

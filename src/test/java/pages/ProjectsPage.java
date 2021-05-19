@@ -12,7 +12,7 @@ public class ProjectsPage extends BasePage {
     public static final String CREATE_NEW_PROJECT_BUTTON = "#createButton";
     public static final String PROJECT_NAME_LINK = ".defect-title";
     public static final String CHOOSE_PROJECT_BY_NAME = "//a[contains(text(),'%s')]";
-    public static final String PROJECT_NAME_LABEL = "//*[contains(text(), 'Project name')]";
+    public static final String PROJECT_NAME_LABEL = "//table[contains(@class,'table')]//*[contains(text(), '%s')]";
 
     @Step("Open 'Project Page'")
     public ProjectsPage openProjectPage() {

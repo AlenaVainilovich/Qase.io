@@ -12,14 +12,15 @@ public class ProjectsTest extends BaseTest {
     String projectName = faker.name().title();
     String description = faker.backToTheFuture().character();
 
-    @Test(description = "Verify that new project is created")
+    @Test(description = "Create new project")
     public void newProjectShouldBeOpened() {
         loginSteps.login(EMAIL, PASSWORD);
         projectSteps
                 .createNewProject(projectName, description);
+
     }
 
-    @Test(description = "Delete project")
+    @Test(description = "Create and delete project")
     public void deleteProject() {
         loginSteps.login(EMAIL, PASSWORD);
         projectSteps
