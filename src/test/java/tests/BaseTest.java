@@ -15,8 +15,8 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 @Log4j2
 @Listeners(TestListener.class)
 public class BaseTest {
-    public static final String EMAIL = System.getenv("Email");
-    public static final String PASSWORD = System.getenv("Password");
+    public static final String EMAIL = "vainilovich@gmail.com";
+    public static final String PASSWORD = "00tut0r00";
 
     Faker faker = new Faker();
 
