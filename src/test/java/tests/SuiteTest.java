@@ -25,6 +25,6 @@ public class SuiteTest extends BaseTest {
                 .createNewProject(projectName, projectDescription);
         projectsPage.chooseProjectByName(projectName);
         suiteSteps.createSuite(testSuite)
-                .deleteSuite(editSuiteName);
+                .deleteSuite(suiteName);
     }
 }
