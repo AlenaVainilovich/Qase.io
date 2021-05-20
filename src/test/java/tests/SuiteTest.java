@@ -1,8 +1,10 @@
 package tests;
 
+import io.qameta.allure.Feature;
 import models.TestSuite;
 import org.testng.annotations.Test;
 
+@Feature("Suite Test")
 public class SuiteTest extends BaseTest {
 
     public String projectName = faker.gameOfThrones().dragon();

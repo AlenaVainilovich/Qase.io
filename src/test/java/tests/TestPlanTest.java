@@ -1,9 +1,11 @@
 package tests;
 
+import io.qameta.allure.Feature;
 import models.TestPlan;
 import org.testng.annotations.Test;
 import utils.Retry;
 
+@Feature("Test Plan")
 public class TestPlanTest extends BaseTest {
     String title = faker.leagueOfLegends().champion();
     String description = faker.leagueOfLegends().location();
