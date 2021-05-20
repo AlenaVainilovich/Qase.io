@@ -1,9 +1,11 @@
 package tests;
 
+import io.qameta.allure.Feature;
 import models.TestCase;
 import models.TestSuite;
 import org.testng.annotations.Test;
 
+@Feature("Case Test")
 public class CaseTest extends BaseTest {
     public String projectName = faker.howIMetYourMother().catchPhrase();
     public String description = faker.backToTheFuture().character();
