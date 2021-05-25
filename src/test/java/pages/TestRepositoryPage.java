@@ -57,6 +57,7 @@ public class TestRepositoryPage extends BasePage {
     public DeletePage clickOnDeleteSuiteButton(String name) {
         log.info(String.format("Find element by locator: %s, move to element and press", DELETE_SUITE));
         Selenide.actions().moveToElement($x(String.format(DELETE_SUITE, name))).click().build().perform();
+        sleep(3000);
         return new DeletePage();
     }
 
