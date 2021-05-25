@@ -7,7 +7,7 @@ import utils.Retry;
 
 @Feature("Test Plan")
 public class TestPlanTest extends BaseTest {
-    String title = faker.leagueOfLegends().champion();
+    String title = faker.harryPotter().character();
     String description = faker.leagueOfLegends().location();
     String editTitle = faker.lordOfTheRings().character();
     String editDescription = faker.lordOfTheRings().location();
